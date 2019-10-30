@@ -109,6 +109,16 @@ RSpec.describe Game do
       end
       # rubocop:enable RSpec/ExampleLength
     end
+
+    describe 'a win' do
+      # Points won: J,J,J,B,B,B,B,B
+      it 'reports Game, B' do
+        3.times { game.point_to(server) }
+        5.times { game.point_to(receiver) }
+
+        expect(game.score).to eq 'Game, B'
+      end
+    end
   end
 
   describe '#point_to(player)' do

@@ -58,7 +58,11 @@ class Game
   end
 
   def call_of_game
-    [call_for_servers_score, server].join(', ')
+    ['Game', points_difference_player].join(', ')
+  end
+
+  def points_difference_player
+    points_difference.positive? ? server : receiver
   end
 
   def advantage?
