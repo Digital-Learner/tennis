@@ -54,7 +54,7 @@ class Game
   end
 
   def game_won?
-    minimum_of_four_points? && !scores_equal? && two_points_clear?
+    minimum_of_points?(4) && !scores_equal? && two_points_clear?
   end
 
   def call_of_game
@@ -66,7 +66,7 @@ class Game
   end
 
   def advantage?
-    minimum_of_three_points? && points_difference.abs == 1
+    minimum_of_points?(3) && points_difference.abs == 1
   end
 
   def call_of_advantage
@@ -77,12 +77,8 @@ class Game
     @points[server] - @points[receiver]
   end
 
-  def minimum_of_three_points?
-    @points[server] >= 3 || @points[receiver] >= 3
-  end
-
-  def minimum_of_four_points?
-    @points[server] >= 4 || @points[receiver] >= 4
+  def minimum_of_points?(points)
+    @points[server] >= points || @points[receiver] >= points
   end
 
   def two_points_clear?
