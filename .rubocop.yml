@@ -1,0 +1,14 @@
+require: rubocop-rspec
+
+Metrics/BlockLength:
+  Exclude:
+    - 'Rakefile'
+    - 'spec/**/*_spec.rb'
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
+Lint/AmbiguousBlockAssociation:
+  Exclude:
+    - "spec/**/*"
+

@@ -11,6 +11,10 @@ class Game
     @points = { server => 0, receiver => 0 }
   end
 
+  def point_to(player)
+    @points[player] += 1
+  end
+
   def score
     'Love-all'
   end
