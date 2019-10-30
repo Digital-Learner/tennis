@@ -7,8 +7,7 @@ class Game
     0 => { points_value: 0, call_as: 'Love' },
     1 => { points_value: 15, call_as: 'Fifteen' },
     2 => { points_value: 30, call_as: 'Thirty' },
-    3 => { points_value: 40, call_as: 'Forty' },
-    4 => { points_value: 50, call_as: 'Game' }
+    3 => { points_value: 40, call_as: 'Forty' }
   }.freeze
 
   attr_reader :server, :receiver, :points
