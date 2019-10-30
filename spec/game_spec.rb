@@ -23,11 +23,29 @@ RSpec.describe Game do
       it { is_expected.to eql 'Love-all' }
     end
 
-    context 'when server has won first point' do
+    context 'when server has won points' do
       it 'reports Fifteen-love' do
         game.point_to(server)
 
         expect(game.score).to eql 'Fifteen-love'
+      end
+
+      it 'reports Thirty-love' do
+        2.times { game.point_to(server) }
+
+        expect(game.score).to eql 'Thirty-love'
+      end
+
+      it 'reports Forty-love' do
+        3.times { game.point_to(server) }
+
+        expect(game.score).to eql 'Forty-love'
+      end
+
+      it 'reports Game, J' do
+        4.times { game.point_to(server) }
+
+        expect(game.score).to eql 'Game, J'
       end
     end
   end
