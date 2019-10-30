@@ -70,9 +70,7 @@ class Game
   end
 
   def call_of_advantage
-    return "Advantage, #{receiver}" if points_difference == -1
-
-    "Advantage, #{server}"
+    "Advantage, #{points_difference_player}"
   end
 
   def points_difference
