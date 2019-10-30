@@ -84,6 +84,6 @@ class Game
   end
 
   def two_points_clear?
-    (@points[server] - @points[receiver]).abs >= 2
+    points_difference.abs >= 2
   end
 end
