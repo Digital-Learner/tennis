@@ -24,7 +24,7 @@ class Game
   end
 
   def score
-    return [call_for_servers_score, 'all'].join('-') if scores_equal?
+    return scores_equal if scores_equal?
 
     return call_of_game if game_won?
 
@@ -35,6 +35,12 @@ class Game
 
   def scores_equal?
     @points[server] == @points[receiver]
+  end
+
+  def scores_equal
+    return [call_for_servers_score, 'all'].join('-') if @points[server] < 3
+
+    'Deuce'
   end
 
   def call_for_servers_score

@@ -17,13 +17,13 @@ RSpec.describe Game do
   end
 
   describe '#score' do
-    context 'when a new game before a point is played' do
+    describe 'when a new game before a point is played' do
       subject { described_class.new(server, receiver).score }
 
       it { is_expected.to eql 'Love-all' }
     end
 
-    context 'when server has won points' do
+    describe 'when server has won points' do
       it 'reports Fifteen-love' do
         game.point_to(server)
 
@@ -46,6 +46,29 @@ RSpec.describe Game do
         4.times { game.point_to(server) }
 
         expect(game.score).to eql 'Game, J'
+      end
+    end
+
+    describe 'when both players have won points with equal scores' do
+      it 'reports Fifteen-all' do
+        game.point_to(server)
+        game.point_to(receiver)
+
+        expect(game.score).to eql 'Fifteen-all'
+      end
+
+      it 'reports Thirty-all' do
+        2.times { game.point_to(receiver) }
+        2.times { game.point_to(server) }
+
+        expect(game.score).to eql 'Thirty-all'
+      end
+
+      it 'reports Deuce when above 3 points' do
+        3.times { game.point_to(receiver) }
+        3.times { game.point_to(server) }
+
+        expect(game.score).to eql 'Deuce'
       end
     end
   end
