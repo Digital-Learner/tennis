@@ -80,6 +80,35 @@ RSpec.describe Game do
         expect(game.score).to eql 'Deuce'
       end
     end
+
+    describe 'when at least 3 points scored by both players' do
+      # Points won: J,B,J,B,J,B,B
+      # rubocop:disable RSpec/ExampleLength
+      it 'reports Advantage, B when receiver has one more point' do
+        game.point_to(server)
+        game.point_to(receiver)
+        game.point_to(server)
+        game.point_to(receiver)
+        game.point_to(server)
+        game.point_to(receiver)
+        game.point_to(receiver)
+
+        expect(game.score).to eq 'Advantage, B'
+      end
+
+      it 'reports Advantage, J when server has one more point' do
+        game.point_to(server)
+        game.point_to(receiver)
+        game.point_to(server)
+        game.point_to(receiver)
+        game.point_to(server)
+        game.point_to(receiver)
+        game.point_to(server)
+
+        expect(game.score).to eq 'Advantage, J'
+      end
+      # rubocop:enable RSpec/ExampleLength
+    end
   end
 
   describe '#point_to(player)' do

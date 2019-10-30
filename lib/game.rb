@@ -26,6 +26,8 @@ class Game
   def score
     return scores_equal if scores_equal?
 
+    return call_of_advantage if advantage?
+
     return call_of_game if game_won?
 
     [call_for_servers_score, call_for_receivers_score].join('-')
@@ -57,6 +59,24 @@ class Game
 
   def call_of_game
     [call_for_servers_score, server].join(', ')
+  end
+
+  def advantage?
+    minimum_of_three_points? && points_difference.abs == 1
+  end
+
+  def call_of_advantage
+    return "Advantage, #{receiver}" if points_difference == -1
+
+    "Advantage, #{server}"
+  end
+
+  def points_difference
+    @points[server] - @points[receiver]
+  end
+
+  def minimum_of_three_points?
+    @points[server] >= 3 || @points[receiver] >= 3
   end
 
   def minimum_of_four_points?
