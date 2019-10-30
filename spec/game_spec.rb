@@ -49,6 +49,15 @@ RSpec.describe Game do
       end
     end
 
+    describe 'server has 3 points and receiver has 1 point [J, J, B, J]' do
+      it 'reports Forty-fifteen' do
+        3.times { game.point_to(server) }
+        game.point_to(receiver)
+
+        expect(game.score).to eql 'Forty-fifteen'
+      end
+    end
+
     describe 'when both players have won points with equal scores' do
       it 'reports Fifteen-all' do
         game.point_to(server)
