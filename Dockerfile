@@ -29,4 +29,4 @@ RUN bundle install
 
 COPY . /usr/src/app/
 
-CMD ["bin/bash"]
+CMD ["sh"]
