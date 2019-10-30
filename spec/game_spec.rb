@@ -13,4 +13,11 @@ RSpec.describe 'Game' do
       expect(game.points[receiver]).to eq 0
     end
   end
+
+  describe '#score' do
+    context 'for a new game before a point is played' do
+      subject { Game.new('J', 'B').score }
+      it { is_expected.to equal 'Love-all' }
+    end
+  end
 end

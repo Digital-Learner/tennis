@@ -10,4 +10,8 @@ class Game
     @receiver = receiver
     @points = { server => 0, receiver => 0 }
   end
+
+  def score
+    'Love-all'
+  end
 end
